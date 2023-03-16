@@ -1,4 +1,5 @@
 import 'package:bloc_navigation/features/homepage/presentation/cubit/home_cubit.dart';
+import 'package:bloc_navigation/features/homepage/presentation/cubit/home_cubit_state.dart';
 import 'package:bloc_navigation/features/second_feature/presentation/cubit/second_page_cubit.dart';
 import 'package:bloc_navigation/core/routes/app_routes.dart';
 import 'package:bloc_navigation/core/routes/models/second_page_argument.dart';
@@ -32,10 +33,10 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-        BlocBuilder<HomeCubit, int>(
+        BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
             return Center(
-              child: Text('Home Bloc ${state.toString()}'),
+              child: Text('Home Bloc ${state.count}'),
             );
           },
         ),

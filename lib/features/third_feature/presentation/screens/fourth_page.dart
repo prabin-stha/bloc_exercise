@@ -1,4 +1,5 @@
 import 'package:bloc_navigation/features/homepage/presentation/cubit/home_cubit.dart';
+import 'package:bloc_navigation/features/homepage/presentation/cubit/home_cubit_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,9 +18,9 @@ class ThirdPage extends StatelessWidget {
           child: Column(
             children: [
               const Text('This can access first cubit but not second.'),
-              BlocBuilder<HomeCubit, int>(
+              BlocBuilder<HomeCubit, HomeState>(
                 builder: (context, state) {
-                  return Text('Home Cubit ${state.toString()}');
+                  return Text('Home Cubit ${state.count}');
                 },
               ),
               // The below code gives an error
