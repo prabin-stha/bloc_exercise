@@ -1,5 +1,4 @@
-import 'package:bloc_navigation/cubit/home_cubit.dart';
-import 'package:bloc_navigation/cubit/second_page_cubit.dart';
+import 'package:bloc_navigation/features/homepage/presentation/cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,7 +9,7 @@ class ThirdPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Third Page'),
+        title: const Text('Fourth Page'),
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 16),

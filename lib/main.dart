@@ -1,9 +1,6 @@
-import 'package:bloc_navigation/cubit/home_cubit.dart';
-import 'package:bloc_navigation/cubit/second_page_cubit.dart';
-import 'package:bloc_navigation/route/app_routes.dart';
-import 'package:bloc_navigation/route/route_generator.dart';
+import 'package:bloc_navigation/core/routes/app_routes.dart';
+import 'package:bloc_navigation/core/routes/route_generator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,6 +37,20 @@ class _MyAppState extends State<MyApp> {
       ),
       initialRoute: AppRoutes.homePage,
       onGenerateRoute: (settings) => _appRouter.onGenerateRoute(settings),
+    );
+  }
+}
+
+class MyWidget extends StatelessWidget {
+  final ButtonStyle btnStyle;
+  const MyWidget({super.key, required this.btnStyle});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () {},
+      style: btnStyle,
+      child: const Text(""),
     );
   }
 }
