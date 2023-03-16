@@ -1,3 +1,4 @@
+import 'package:bloc_navigation/core/domain/entity/freezed_test.dart';
 import 'package:bloc_navigation/features/homepage/presentation/cubit/home_cubit.dart';
 import 'package:bloc_navigation/features/homepage/presentation/cubit/home_cubit_state.dart';
 import 'package:bloc_navigation/features/second_feature/presentation/cubit/second_page_cubit.dart';
@@ -11,6 +12,24 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // const FreezedTest ft = FreezedTest(name: 'Prabin Shrestha', age: 21);
+    // final ftCpy = ft.copyWith(name: 'Prabin Shrestha');
+
+    // debugPrint(ft.toString());
+    // debugPrint(ftCpy.toString());
+
+    // debugPrint('Print ${(ft == ftCpy).toString()}');
+
+    int performOperation(int operand, FreezedNestedTest freezedNestedTest) {
+      return freezedNestedTest.when(
+        add: (value) => operand + value,
+        subtract: (value) => operand - value,
+      );
+    }
+
+    final int calculate = performOperation(2, const FreezedNestedTest.add(6));
+    debugPrint(calculate.toString());
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home Page'),

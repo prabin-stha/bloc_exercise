@@ -11,6 +11,8 @@ enum StorageKeys {
 class StorageService {
   final Storage storage = HydratedBloc.storage;
 
+  StorageService();
+
   AppMetadata? getAppMetadata() => storage.read(StorageKeys.metadata.key);
 
   void setAppMetadata(AppMetadata metadata) {

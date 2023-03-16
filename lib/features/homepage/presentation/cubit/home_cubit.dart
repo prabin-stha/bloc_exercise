@@ -9,7 +9,7 @@ class HomeCubit extends HydratedCubit<HomeState> {
   }
 
   void decrement() {
-    emit(HomeState(state.count + 1));
+    emit(HomeState(state.count - 1));
   }
 
   @override
