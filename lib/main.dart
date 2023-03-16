@@ -33,20 +33,13 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (_) => HomeCubit(),
-        ),
-      ],
-      child: MaterialApp(
-        title: 'Bloc Navigation',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        initialRoute: AppRoutes.homePage,
-        onGenerateRoute: (settings) => _appRouter.onGenerateRoute(settings),
+    return MaterialApp(
+      title: 'Bloc Navigation',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
+      initialRoute: AppRoutes.homePage,
+      onGenerateRoute: (settings) => _appRouter.onGenerateRoute(settings),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:bloc_navigation/cubit/home_cubit.dart';
 import 'package:bloc_navigation/cubit/second_page_cubit.dart';
 import 'package:bloc_navigation/route/app_routes.dart';
 import 'package:bloc_navigation/route/model/second_page_argument.dart';
@@ -9,15 +10,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRouter {
   final SecondPageCubit _secondCubit;
+  final HomeCubit _homeCubit;
 
-  AppRouter() : _secondCubit = SecondPageCubit();
+  AppRouter()
+      : _secondCubit = SecondPageCubit(),
+        _homeCubit = HomeCubit();
 
   Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.homePage:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider.value(
-            value: _secondCubit,
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider.value(value: _secondCubit),
+              BlocProvider.value(value: _homeCubit),
+            ],
             child: const HomePage(),
           ),
         );
@@ -28,8 +35,11 @@ class AppRouter {
           payload = settings.arguments as SecondPageArgument;
         }
         return MaterialPageRoute(
-          builder: (_) => BlocProvider.value(
-            value: _secondCubit,
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider.value(value: _secondCubit),
+              BlocProvider.value(value: _homeCubit),
+            ],
             child: SecondPage(
               name: payload?.name,
             ),
@@ -38,7 +48,10 @@ class AppRouter {
 
       case AppRoutes.thirdPage:
         return MaterialPageRoute(
-          builder: (_) => const ThirdPage(),
+          builder: (_) => BlocProvider.value(
+            value: _homeCubit,
+            child: const ThirdPage(),
+          ),
         );
 
       default:
